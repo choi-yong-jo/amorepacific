@@ -8,16 +8,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
-@Controller
-@RequestMapping("member")
+@RestController
+@RequestMapping("memberTest")
 @Slf4j
-public class MemberController {
+public class MemberTestController {
 
     @Autowired
     MemberService memberService;
@@ -53,12 +52,12 @@ public class MemberController {
     // 회원 입력
     @PostMapping
     public ResponseEntity<Member> save(Member member) {
-        return new ResponseEntity<Member>(memberService.save(member), HttpStatus.OK);
+        return new ResponseEntity<Member>(memberService.save(member), HttpStatus.CREATED);
     }
 
     // 회원 입력
     @RequestMapping(value="/saveMember", method = RequestMethod.GET)
-    public ResponseEntity<Member> save(HttpServletRequest req, Member member){
-        return new ResponseEntity<Member>(memberService.save(member), HttpStatus.OK);
+    public ResponseEntity<Member> save(HttpServletRequest req, Member member) {
+        return new ResponseEntity<Member>(memberService.save(member), HttpStatus.CREATED);
     }
 }
