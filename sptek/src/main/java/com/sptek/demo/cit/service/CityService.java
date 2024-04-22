@@ -20,13 +20,13 @@ public class CityService {
     }
 
     public List<City> findAllCities() {
-        final List<City> cities = cityRepository.findAll();
+        List<City> cities = cityRepository.findAll();
         return cities.isEmpty() ? Collections.emptyList() : cities;
     }
 
     @Transactional
     public List<City> findCitiesStartWith(final String str) {
-        final List<City> cities = cityRepository.findStartWith(str);
+        List<City> cities = cityRepository.findStartWith(str);
         return cities.isEmpty() ? Collections.emptyList() : cities;
     }
 
